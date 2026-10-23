@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kenduriflow",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js", "--demo"],
+      "port": 3000
+    },
+    {
+      "name": "kenduriflow-live",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js", "--live"],
+      "port": 3000
+    }
+  ]
+}

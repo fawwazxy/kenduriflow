@@ -1,0 +1,17 @@
+# Render settings: the public demo (role chooser, sample events, no sign-in).
+# Free plan: sleeps after 15 minutes without visitors and wakes on the next visit.
+# Data resets on each restart, which is fine for the demo because it starts from clean sample events.
+services:
+  - type: web
+    name: kenduriflow
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js --demo
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Render serves the app over https, so cookies are marked secure and the local https port stays off.
+      - key: TRUST_PROXY
+        value: "1"

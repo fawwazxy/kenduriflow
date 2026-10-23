@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>Guard · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="has-tabs">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</a>
+      <nav class="nav" aria-label="Main" id="nav"></nav>
+      <span class="conn" id="conn">Connecting</span>
+      <a class="avatar" id="avatar" href="/login" hidden></a>
+    </div>
+  </header>
+
+  <main class="container page" id="main">
+    <!-- Event picker (shown at /guard) -->
+    <div id="pickView" hidden>
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Guardhouse</p>
+          <h1>Which event are you managing?</h1>
+          <p class="sub">Pick the event at your entrance. Every screen updates live.</p>
+        </div>
+      </div>
+      <div id="pickList"><div class="skel" style="height:96px;margin-bottom:12px"></div><div class="skel" style="height:96px"></div></div>
+    </div>
+
+    <!-- Live view (shown at /guard/:id) -->
+    <div id="liveView" hidden style="max-width:760px;margin:0 auto">
+      <div class="page-head" style="margin-bottom:12px">
+        <div style="min-width:0">
+          <h1 id="gdTitle"></h1>
+          <div class="chips" id="gdSub"></div>
+        </div>
+      </div>
+
+      <div class="segtabs" id="tabs">
+        <button type="button" data-tab="count">Count</button>
+        <button type="button" data-tab="map">Map</button>
+        <button type="button" data-tab="reports">Reports <span class="count" id="repCount" hidden></span></button>
+        <button type="button" data-tab="activity">Activity</button>
+      </div>
+
+      <div data-panel="count">
+        <div class="stack">
+          <section class="card">
+            <div id="gdLane"></div>
+            <div class="card-head" style="align-items:center">
+              <div><span class="small muted">Event time</span><div class="clock" id="gdClock"></div></div>
+              <span id="gdStatus"></span>
+            </div>
+            <div class="stats four" id="gdStats"></div>
+            <button class="btn block" type="button" id="scanBtn" style="min-height:68px;font-size:17px;margin-bottom:12px;background:var(--brand-ink);flex-direction:column;gap:2px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:26px;height:26px"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg>Scan guest pass<small style="display:block;font-weight:500;opacity:.85;font-size:12.5px">green entry pass = in · blue exit pass = out</small></button>
+            <div id="gdNext"></div>
+            <div class="counter">
+              <button class="btn big leave" type="button" id="leaveCar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg>Car leaving</button>
+              <button class="btn big" type="button" id="addCar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Car arriving<small>sends it to the next free space</small></button>
+              <button class="btn big amber wide" type="button" id="addVip">+ Elderly or OKU car<small>uses the spaces kept next to the house</small></button>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Count by zone</h2>
+            <p class="intro">Use − and + when a car parks somewhere the app did not send it. When you walk past a zone, tap <b>Recount</b> and enter the cars you can see.</p>
+            <div id="gdZones"></div>
+          </section>
+
+          <section class="card">
+            <h2>Event controls</h2>
+            <div class="controls">
+              <button class="btn secondary" type="button" id="playBtn">Play the event</button>
+              <button class="btn secondary" type="button" id="finishBtn">End event and save counts</button>
+              <button class="btn ghost" type="button" id="resetBtn">Reset live counts</button>
+            </div>
+            <p class="small muted" style="margin-top:10px" id="controlsNote"><b>Play the event</b> runs the whole event in under a minute from the predicted arrivals, for demos. <b>End event</b> frees every space and saves your real counts, so the next estimate for this type of event improves.</p>
+          </section>
+        </div>
+      </div>
+
+      <div data-panel="map" hidden>
+        <section class="card">
+          <h2>Live map</h2>
+          <div class="map" id="gdMap"></div>
+          <div class="legend" id="gdLegend"></div>
+        </section>
+        <section class="card">
+          <h2 id="gdTodayTitle">Events on these streets that day</h2>
+          <div id="gdToday"></div>
+        </section>
+      </div>
+
+      <div data-panel="reports" hidden>
+        <section class="card">
+          <div class="card-head"><h2>Reports from neighbours</h2><span id="gdReportCount"></span></div>
+          <div id="gdReports"></div>
+        </section>
+      </div>
+
+      <div data-panel="activity" hidden>
+        <section class="card">
+          <h2>Activity</h2>
+          <ul class="list log" id="gdLog"></ul>
+        </section>
+        <section class="card">
+          <h2>Switch event</h2>
+          <select id="gdSwitch" aria-label="Switch event"></select>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <button class="fab" type="button" id="scanFab" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg>Scan</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/guard.js"></script>
+</body>
+</html>

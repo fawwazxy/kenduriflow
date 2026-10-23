@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>Township team · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="has-tabs">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</a>
+      <nav class="nav" aria-label="Main" id="nav"></nav>
+      <span class="conn" id="conn">Connecting</span>
+      <a class="avatar" id="avatar" href="/login" hidden></a>
+    </div>
+  </header>
+
+  <main class="container page">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Township team</p>
+        <h1>Dashboard</h1>
+        <p class="sub" id="precinctName">Home events, parking and planning data.</p>
+      </div>
+      <div class="actions">
+        <button class="btn danger" type="button" id="resetAll" hidden>Reset demo data</button>
+      </div>
+    </div>
+
+    <div class="stats five tiles" id="kpis"><div class="skel" style="height:92px"></div><div class="skel" style="height:92px"></div><div class="skel" style="height:92px"></div></div>
+
+    <div class="segtabs" id="tabs">
+      <button type="button" data-tab="events">Events</button>
+      <button type="button" data-tab="reports">Reports <span class="count" id="repCount" hidden></span></button>
+      <button type="button" data-tab="learning">Learning</button>
+      <button type="button" data-tab="planning">Planning</button>
+    </div>
+
+    <div data-panel="events">
+      <section class="card">
+        <h2>Upcoming events</h2>
+        <div id="events"><div class="skel" style="height:160px"></div></div>
+      </section>
+      <div class="grid cols-even" style="margin-bottom:16px">
+        <section class="card">
+          <h2>Street clashes</h2>
+          <div id="clashes"></div>
+        </section>
+        <section class="card">
+          <h2>Extra rubbish pickups</h2>
+          <div id="pickups"></div>
+        </section>
+      </div>
+      <section class="card" id="cancelledCard" hidden>
+        <h2>Cancelled events</h2>
+        <div id="cancelled"></div>
+      </section>
+    </div>
+
+    <div data-panel="reports" hidden>
+      <section class="card">
+        <div class="card-head"><h2>Neighbour reports</h2><span id="reportCount"></span></div>
+        <div id="reports"></div>
+      </section>
+    </div>
+
+    <div data-panel="learning" hidden>
+      <section class="card">
+        <div class="card-head"><h2>Learning from real counts</h2><span class="small muted" id="learnNote"></span></div>
+        <p class="intro">When a guard ends an event, the cars counted are compared with the prediction. Each type of event then uses a blend of the starting assumption and what was counted.</p>
+        <div class="grid cols-even">
+          <div id="learnTypes"></div>
+          <div id="learnEvents"></div>
+        </div>
+      </section>
+    </div>
+
+    <div data-panel="planning" hidden>
+      <div class="grid cols-even" style="margin-bottom:16px">
+        <section class="card">
+          <div class="card-head"><h2>Home events per month</h2><span class="sample">Sample data</span></div>
+          <div id="monthly"></div>
+          <details style="margin-top:10px"><summary>Show as a table</summary><div id="monthlyTable"></div></details>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>Busiest streets, last 6 months</h2><span class="sample">Sample data</span></div>
+          <div id="streets"></div>
+        </section>
+      </div>
+      <section class="card">
+        <div class="card-head"><h2>What to build next</h2><span class="sample">From sample data</span></div>
+        <div class="insights" id="insights"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

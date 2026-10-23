@@ -1,0 +1,25 @@
+{
+  "name": "kenduriflow",
+  "version": "1.0.0",
+  "description": "Smart parking for township celebrations. Prototype for the Sime Darby Property University Hackathon 2026.",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js --demo",
+    "demo": "node server.js --demo",
+    "live": "node server.js --live",
+    "dev": "node --watch server.js --demo",
+    "dev:live": "node --watch server.js --live",
+    "reset": "node scripts/reset.js --demo"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4",
+    "selfsigned": "^5.5.0",
+    "socket.io": "^4.8.1"
+  }
+}

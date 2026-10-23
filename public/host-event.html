@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>Event · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="has-tabs has-actionbar">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</a>
+      <nav class="nav" aria-label="Main" id="nav"></nav>
+      <span class="conn" id="conn">Connecting</span>
+      <a class="avatar" id="avatar" href="/login" hidden></a>
+    </div>
+  </header>
+
+  <main class="container page" id="main" style="max-width:980px">
+    <div class="page-head" style="margin-bottom:12px">
+      <div style="min-width:0">
+        <span id="evStatus"></span>
+        <h1 id="evTitle" style="margin-top:6px"><span class="skel" style="display:block;height:30px;width:70%"></span></h1>
+        <div class="chips" id="evSub"></div>
+      </div>
+    </div>
+    <div id="evAlerts"></div>
+
+    <div class="segtabs" id="tabs">
+      <button type="button" data-tab="overview">Overview</button>
+      <button type="button" data-tab="live">Live</button>
+      <button type="button" data-tab="guests">Guests</button>
+      <button type="button" data-tab="neighbours">Neighbours <span class="count" id="repCount" hidden></span></button>
+    </div>
+
+    <section data-panel="overview">
+      <div id="evStats"><div class="skel" style="height:96px;margin-bottom:12px"></div></div>
+      <div id="evResult"></div>
+      <section class="card">
+        <div class="card-head"><h2>Cars through the day</h2></div>
+        <div id="evChart"><div class="skel" style="height:200px"></div></div>
+        <details style="margin-top:12px"><summary>How we estimate this</summary><ol id="evHow"></ol></details>
+      </section>
+      <section class="card">
+        <h2>Parking plan</h2>
+        <p class="intro">Closest spaces fill first. The house side of the road and every neighbour's gate stay clear.</p>
+        <div id="evPlan"></div>
+      </section>
+    </section>
+
+    <section data-panel="live" hidden>
+      <section class="card">
+        <div class="card-head"><h2>Live map</h2><span class="small muted" id="evLive"></span></div>
+        <div class="map" id="evMap"></div>
+        <div class="legend" id="evLegend"></div>
+      </section>
+      <section class="card">
+        <h2>Zones</h2>
+        <div class="meters" id="evMeters" style="margin-top:0"></div>
+      </section>
+    </section>
+
+    <section data-panel="guests" hidden>
+      <div id="evShare"></div>
+    </section>
+
+    <section data-panel="neighbours" hidden>
+      <section class="card">
+        <h2>Neighbours</h2>
+        <div id="evNeighbours"></div>
+      </section>
+      <section class="card">
+        <h2>What happens and when</h2>
+        <ul class="list timeline" id="evTimeline"></ul>
+      </section>
+    </section>
+  </main>
+
+  <div class="actionbar pinned container" id="actionbar" style="max-width:980px;margin-bottom:24px" hidden></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/host-event.js"></script>
+</body>
+</html>

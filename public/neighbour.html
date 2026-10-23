@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>Home · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="has-tabs">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</a>
+      <nav class="nav" aria-label="Main" id="nav"></nav>
+      <span class="langsw" id="langSw"></span>
+      <span class="conn" id="conn">Connecting</span>
+      <a class="avatar" id="avatar" href="/login" hidden></a>
+    </div>
+  </header>
+
+  <main class="container page narrow" style="max-width:720px">
+    <div class="greet">
+      <div class="hello" id="hello"></div>
+      <h1 id="who"><span class="skel" style="display:block;height:30px;width:60%"></span></h1>
+      <div class="chips"><span class="chip"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg><span id="houseName"></span></span></div>
+    </div>
+
+    <div id="notice"></div>
+
+    <div class="quick-grid">
+      <button class="qa red" type="button" id="qaGate"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M7 21v-9h10v9"/><path d="M12 12v9"/></svg>
+        <span><b data-ms="Pagar saya dihalang">My gate is blocked</b><small id="qaGateSub"></small></span></button>
+      <button class="qa" type="button" id="qaReport"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--bad)"><path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/></svg>
+        <span><b data-ms="Masalah lain">Other problem</b><small data-ms="Lorong kecemasan, rumput, orang ramai">Emergency lane, verge, crowd</small></span></button>
+      <button class="qa" type="button" id="qaFront"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--brand)"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg>
+        <span><b data-ms="Kosongkan depan pagar">Keep my gate clear</b><small id="qaFrontSub"></small></span></button>
+      <a class="qa gold" href="#points-info" id="qaPoints"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#8A5F00"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3l-5.5 2.9 1-6.2L3 9.6l6.2-.9z"/></svg>
+        <span><b><span id="points">0</span> <span data-ms="mata">points</span></b><small id="pointsNote"></small></span></a>
+    </div>
+
+    <p class="rows-title" data-ms="Majlis berhampiran">Events near you</p>
+    <ul class="list feed card" id="feed" style="padding:16px"><li><div class="skel" style="height:90px"></div></li></ul>
+
+    <p class="rows-title" data-ms="Laporan anda">Your reports</p>
+    <ul class="list card" id="myReports" style="padding:16px"><li class="empty">None.</li></ul>
+
+    <section id="points-info" class="card points-card" style="margin-top:16px">
+      <h2 style="color:#4A3300" data-ms="Mata ganjaran">Reward points</h2>
+      <p class="small" style="color:#5C4300;margin:0" data-ms="Kongsi laluan masuk anda apabila keluar pada hari majlis, dan dapat mata bagi setiap kereta tetamu.">Share your driveway when you are out on the day of a majlis, and earn points for every guest car parked there.</p>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/neighbour.js"></script>
+</body>
+</html>

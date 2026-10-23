@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>My events · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="has-tabs">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</a>
+      <nav class="nav" aria-label="Main" id="nav"></nav>
+      <span class="conn" id="conn">Connecting</span>
+      <a class="avatar" id="avatar" href="/login" hidden></a>
+    </div>
+  </header>
+
+  <main class="container page narrow" style="max-width:720px;padding-bottom:110px">
+    <div class="page-head">
+      <div>
+        <h1 id="pageTitle">My events</h1>
+        <p class="sub" id="pageSub">Plan parking for your majlis, share one link with your guests, and see it live on the day.</p>
+      </div>
+    </div>
+
+    <div class="segtabs" id="tabs">
+      <button type="button" data-tab="upcoming">Upcoming</button>
+      <button type="button" data-tab="past">Past</button>
+    </div>
+    <section data-panel="upcoming"><div class="ev-list" id="upcoming"><div class="skel" style="height:118px"></div><div class="skel" style="height:118px"></div></div></section>
+    <section data-panel="past" hidden><div class="ev-list" id="past"></div></section>
+  </main>
+
+  <a class="fab" href="/plan" id="fab"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>New majlis</a>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/host.js"></script>
+</body>
+</html>

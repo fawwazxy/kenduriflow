@@ -1,0 +1,24 @@
+{
+  "name": "KenduriFlow",
+  "short_name": "KenduriFlow",
+  "description": "Smart parking for every township celebration: weddings, kenduri, tahlil and open houses.",
+  "id": "/",
+  "start_url": "/?source=app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#063D2C",
+  "theme_color": "#063D2C",
+  "lang": "en",
+  "categories": ["navigation", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Guard: count cars", "short_name": "Guard", "url": "/guard", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Report a blocked gate", "short_name": "Report", "url": "/neighbour", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "My events", "short_name": "My events", "url": "/host", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

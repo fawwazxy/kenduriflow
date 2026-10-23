@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body style="background:var(--brand-ink)">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <span class="logo"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</span>
+      <span class="langsw" id="langSw"></span>
+    </div>
+  </header>
+
+  <!-- Demo: choose a role, no sign-in -->
+  <main class="chooser" id="chooser" hidden>
+    <div class="chooser-in">
+      <img src="/icons/icon-192.png" alt="" class="chooser-logo">
+      <p class="eyebrow" style="color:var(--gold)" data-ms="Demo KenduriFlow">KenduriFlow demo</p>
+      <h1 data-ms="Siapa anda?">Who are you?</h1>
+      <p class="chooser-sub" data-ms="Pilih peranan untuk melihat apa yang dilihat oleh orang itu. Tiada log masuk. Tukar bila-bila masa dari bar atas.">Choose a role to see KenduriFlow the way that person does. No sign-in. Switch any time from the top bar.</p>
+      <div class="role-cards" id="roleCards"></div>
+      <p class="fine"><button class="btn link small" type="button" id="phoneBtn2" style="color:#A9CDBF" data-ms="Buka di telefon anda">Open on your phone</button></p>
+    </div>
+  </main>
+
+  <main class="welcome" id="main" hidden>
+    <div class="brand">
+      <img src="/icons/icon-192.png" alt="">
+      <h1 data-ms="Tetamu dapat parkir. Pagar kekal kosong. Ambulans boleh lalu.">Guests park. Gates stay clear. The ambulance gets through.</h1>
+      <p data-ms="Parkir pintar untuk setiap majlis di taman perumahan: perkahwinan, kenduri, tahlil, aqiqah dan rumah terbuka.">Smart parking for every celebration in the township: weddings, kenduri, tahlil, aqiqah and open houses.</p>
+      <div class="slides" aria-label="How it works">
+        <div class="slide"><b><span class="n">1</span><span data-ms="Ramal">Predict</span></b><p data-ms="Berapa kereta akan datang dan bila, daripada bilangan tetamu dan jawapan mereka.">How many cars will come, and when, from the guest count and guests' own replies.</p></div>
+        <div class="slide"><b><span class="n">2</span><span data-ms="Agih">Allocate</span></b><p data-ms="Paling dekat dahulu: jalan sendiri, laluan masuk jiran, jalan sebelah, surau, kemudian mall dengan bas ulang-alik.">Nearest first: own street, neighbours' driveways, next street, surau, then the mall with a shuttle.</p></div>
+        <div class="slide"><b><span class="n">3</span><span data-ms="Pandu">Guide</span></b><p data-ms="Setiap tetamu menyimpan tempat kosong semasa dalam perjalanan. Tempat terdekat untuk warga emas dan OKU.">Each guest holds a free space on the way. The nearest spaces are kept for elderly and OKU guests.</p></div>
+        <div class="slide"><b><span class="n">4</span><span data-ms="Belajar">Learn</span></b><p data-ms="Kiraan sebenar pengawal menjadikan anggaran seterusnya lebih tepat.">The guard's real counts make the next estimate more accurate.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="cta">
+        <a class="btn light" href="/login" data-ms="Log masuk">Sign in</a>
+        <button class="btn ghost" type="button" id="guestBtn" data-ms="Saya tetamu majlis">I'm a guest at a majlis</button>
+      </div>
+      <p class="fine" data-ms="Untuk penduduk, pengawal dan pasukan perbandaran. Tetamu tidak perlu akaun.">For residents, guards and the township team. Guests never need an account.</p>
+      <p class="fine"><button class="btn link small" type="button" id="phoneBtn" style="color:#A9CDBF" data-ms="Buka di telefon anda">Open on your phone</button></p>
+    </div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>

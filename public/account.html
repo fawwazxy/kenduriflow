@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>Account · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body class="has-tabs">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</a>
+      <nav class="nav" aria-label="Main" id="nav"></nav>
+      <span class="langsw" id="langSw"></span>
+      <a class="avatar" id="avatar" href="/login" hidden></a>
+    </div>
+  </header>
+
+  <main class="container page narrow" style="max-width:600px">
+    <h1 style="margin-bottom:14px" data-ms="Akaun">Account</h1>
+    <section class="card">
+      <div class="profile" id="profile"><span class="skel" style="width:64px;height:64px;border-radius:50%"></span></div>
+    </section>
+
+    <p class="rows-title" data-ms="Tetapan">Settings</p>
+    <ul class="rows">
+      <li><button class="row" type="button" id="rowLang"><span class="lead"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg></span>
+        <span class="body"><b data-ms="Bahasa">Language</b></span><span class="trail" id="langNow"></span></button></li>
+      <li><button class="row" type="button" id="rowInstall"><span class="lead gold"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></span>
+        <span class="body"><b data-ms="Pasang aplikasi">Install the app</b><small id="installSub"></small></span></button></li>
+      <li><button class="row" type="button" id="rowPhone"><span class="lead grey"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg></span>
+        <span class="body"><b data-ms="Buka di telefon lain">Open on another phone</b><small data-ms="Kod QR untuk alamat ini">QR code for this address</small></span></button></li>
+      <li><div class="row" style="cursor:default"><span class="lead grey"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg></span>
+        <span class="body"><b data-ms="Kemas kini langsung">Live updates</b></span><span class="conn" id="conn" style="background:var(--brand-soft);color:var(--brand-ink)">Connecting</span></div></li>
+    </ul>
+
+    <div id="demoCard" hidden>
+      <p class="rows-title">Demo</p>
+      <ul class="rows">
+        <li><button class="row" type="button" id="rowSwitch"><span class="lead"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14.8c2 .7 3.2 2.5 3.5 5.2"/></svg></span>
+          <span class="body"><b data-ms="Tukar peranan">Switch role</b><small data-ms="Pihak perbandaran, pengawal, penduduk atau tetamu">Township team, guard, resident or guest</small></span></button></li>
+      </ul>
+    </div>
+
+    <ul class="rows" style="margin-top:20px">
+      <li><button class="row danger" type="button" id="signOut"><span class="lead red"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4"/><path d="M10 8l-4 4 4 4"/><path d="M6 12h10"/></svg></span>
+        <span class="body"><b data-ms="Log keluar">Sign out</b></span></button></li>
+    </ul>
+    <p class="small faint" style="text-align:center;margin-top:16px">KenduriFlow · smart parking for township celebrations</p>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/account.js"></script>
+</body>
+</html>

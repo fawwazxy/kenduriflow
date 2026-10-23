@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>Where to park · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <span class="logo"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</span>
+      <span class="langsw" id="langSw"></span>
+      <span class="conn" id="conn">Connecting</span>
+    </div>
+  </header>
+
+  <main class="container narrow" id="main" style="padding-bottom:32px">
+    <section class="invite" id="invite">
+      <p class="eyebrow" data-ms="Anda dijemput ke">You are invited to</p>
+      <h1 id="gTitle">Loading…</h1>
+      <div class="chips" id="gWhen"></div>
+    </section>
+
+    <div id="gLane"></div>
+    <section id="parkBox" aria-live="polite"></section>
+    <section id="passBox"></section>
+    <section id="rsvpBox"></section>
+
+    <section class="card" style="margin-top:16px">
+      <div class="card-head"><h2 data-ms="Peta">Map</h2><span class="small muted" data-ms="Garis putus-putus: laluan jalan kaki ke rumah">Dashed line: your walk to the house</span></div>
+      <div class="map" id="gMap"></div>
+      <div class="legend">
+        <span><i class="lg" style="background:#2F6EBA"></i><span data-ms="Tepi jalan">Street kerb</span></span>
+        <span><i class="lg" style="background:#C27C0E"></i><span data-ms="Laluan masuk jiran">Shared driveway</span></span>
+        <span><i class="lg" style="background:#1F8A70"></i>Surau</span>
+        <span><i class="lg" style="background:#8E4FB5"></i><span data-ms="Mall + bas ulang-alik">Mall + shuttle</span></span>
+        <span><i class="lg planned"></i><span data-ms="Tempat kosong">Free space</span></span>
+      </div>
+    </section>
+
+    <p class="small faint" style="text-align:center" data-ms="Sila letak kereta hanya di tempat yang ditunjukkan, dan jangan sekali-kali di sebelah rumah. Itu lorong kecemasan.">Please park only where this page tells you, and never on the house side of the road. It is the emergency lane.</p>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/guest.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#063D2C">
+  <title>Sign in · KenduriFlow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KenduriFlow">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">K</span>KenduriFlow</a>
+      <span class="langsw" id="langSw"></span>
+    </div>
+  </header>
+
+  <main class="auth">
+    <div class="auth-brand">
+      <img src="/icons/icon-192.png" alt="">
+      <h1 data-ms="Log masuk ke KenduriFlow">Sign in to KenduriFlow</h1>
+      <p class="muted" style="margin:0" data-ms="Untuk penduduk, pengawal dan pasukan perbandaran.">For residents, guards and the township team.</p>
+    </div>
+
+    <section class="card">
+      <form id="phoneForm" novalidate>
+        <div class="field">
+          <label for="phone" data-ms="Nombor telefon bimbit">Mobile number</label>
+          <div class="phone-field"><span>+60</span><input type="tel" id="phone" inputmode="tel" autocomplete="tel-national" placeholder="12-345 6712" required></div>
+        </div>
+        <div class="form-error" id="phoneErr" role="alert" hidden></div>
+        <button class="btn block" type="submit" id="sendBtn" data-ms="Hantar kod">Send code</button>
+      </form>
+
+      <form id="codeForm" novalidate hidden>
+        <p id="codeSent" style="margin-bottom:12px"></p>
+        <div class="demo-note" id="demoNote"></div>
+        <div class="field">
+          <label for="code" id="codeLabel">Code</label>
+          <input type="text" id="code" class="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" required>
+        </div>
+        <div class="form-error" id="codeErr" role="alert" hidden></div>
+        <button class="btn block" type="submit" id="verifyBtn" data-ms="Log masuk">Sign in</button>
+        <button class="btn link block" type="button" id="otherNumber" data-ms="Guna nombor lain">Use another number</button>
+      </form>
+    </section>
+
+    <div class="or" id="demoOr" hidden data-ms="atau cuba akaun demo">or try a demo account</div>
+    <div class="accounts" id="demoAccounts"></div>
+
+    <div class="alert info" style="margin-top:20px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      <span data-ms="Tetamu majlis? Anda tidak perlu akaun. Buka sahaja pautan daripada jemputan.">Coming as a guest? You don't need an account. Just open the link from the invitation.</span></div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/login.js"></script>
+</body>
+</html>
